@@ -130,12 +130,12 @@ namespace CmpGrfLAB1
                 if (Paint_or_Move)
                 {
                     Paint_or_Move = false;
-                    Mode.Text = "Выбран режим перемещения фигуры";
+                    Mode.Text = "selected move mode";
                 }
                 else
                 {
                     Paint_or_Move = true;
-                    Mode.Text = "Выбран режим рисования фигуры";
+                    Mode.Text = "selected drawing mode";
                 }
             }
         }
@@ -224,6 +224,12 @@ namespace CmpGrfLAB1
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Smooth = checkBox1.Checked;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (triangles[N_set].Count != 0)
+                triangles[N_set].RemoveAt(triangles[N_set].Count - 1);  
         }
     }
 }
