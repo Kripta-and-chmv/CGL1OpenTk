@@ -12,11 +12,7 @@ namespace CmpGrfLAB1
         public int x { get; set; }
         public int y { get; set; }
 
-        //Point's color
-       
-        public int red { get; set; }
-        public int green { get; set; }
-        public int blue { get; set; }
+     
 
         
         public points(int x_, int y_, int red_, int green_, int blue_)
