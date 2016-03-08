@@ -1,0 +1,14 @@
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\CmpGrfLAB1.exe.config
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\CmpGrfLAB1.exe
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\CmpGrfLAB1.pdb
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\OpenTK.dll
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\OpenTK.GLControl.dll
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\OpenTK.pdb
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\OpenTK.xml
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\bin\Debug\OpenTK.GLControl.xml
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\obj\Debug\CmpGrfLAB1.Form1.resources
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\obj\Debug\CmpGrfLAB1.Properties.Resources.resources
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\obj\Debug\CmpGrfLAB1.csproj.GenerateResource.Cache
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\obj\Debug\CmpGrfLAB1.exe
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\obj\Debug\CmpGrfLAB1.pdb
+c:\users\софия\documents\visual studio 2013\Projects\CmpGrfLAB1\CmpGrfLAB1\obj\Debug\CmpGrfLAB1.csprojResolveAssemblyReference.cache
