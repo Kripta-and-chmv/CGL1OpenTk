@@ -64,7 +64,7 @@ namespace CmpGrfLAB1
             GL.ClearColor(Color.White);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.PointSize(6);
-            if(Smooth)
+            if(Smooth)//сглаживание линий
                 GL.Enable(EnableCap.LineSmooth);
             GL.Begin(PrimitiveType.Triangles);
             foreach (List<Triangles> trian in triangles)//отрисовка примитивов
@@ -88,7 +88,7 @@ namespace CmpGrfLAB1
                 GL.Color3(Color.Violet);
                 GL.Vertex2(pt.x, pt.y);
             }
-            if(Active)
+            if(Active)//если набор активный, то он выделяется точками
                 foreach(Triangles tr in triangles[index])
                 {
                     GL.PointSize(8);
@@ -124,7 +124,7 @@ namespace CmpGrfLAB1
                 triangles.Add(new List<Triangles>());
                 listBox1.Items.Add("Set №" + N_set.ToString());
             }
-            if (e.Button == MouseButtons.Middle)
+            if (e.Button == MouseButtons.Middle)//выбор режима
             {
 
                 if (Paint_or_Move)
@@ -160,7 +160,7 @@ namespace CmpGrfLAB1
             }
         }
 
-        private void Del_Click(object sender, EventArgs e)
+        private void Del_Click(object sender, EventArgs e)//удаление набора
         {
             var ind=listBox1.SelectedIndices;
             while(ind.Count!=0)
@@ -197,15 +197,8 @@ namespace CmpGrfLAB1
                 }
             }
         }    
-
-        private void отменитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-                if(triangles[N_set].Count!=0)
-                    triangles[N_set].RemoveAt(triangles[N_set].Count-1);              
-    
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)//Активный набор в листбоксе
         {
             var ind = listBox1.SelectedIndices;
             if(ind.Count != 0)
@@ -215,21 +208,27 @@ namespace CmpGrfLAB1
             }                          
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//отмена текущего набора
         {
             Active = false;
             index = listBox1.SelectedIndex;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)//сглаживание
         {
             Smooth = checkBox1.Checked;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//отмена последнего треугольника
         {
             if (triangles[N_set].Count != 0)
                 triangles[N_set].RemoveAt(triangles[N_set].Count - 1);  
+        }
+
+        private void button3_Click(object sender, EventArgs e)//отмена последней точки
+        {
+            if (tmp_point.Count != 0)
+                tmp_point.RemoveAt(tmp_point.Count - 1);
         }
     }
 }
