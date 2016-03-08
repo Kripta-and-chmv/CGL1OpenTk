@@ -18,11 +18,7 @@ namespace CmpGrfLAB1
         public points(int x_, int y_, int red_, int green_, int blue_)
         {
             x = x_;
-            y = y_;
-            red = red_;
-            green = green_;
-            blue = blue_;
-              
+            y = y_;              
         }
     }
 }

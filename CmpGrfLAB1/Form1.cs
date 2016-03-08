@@ -21,10 +21,12 @@ namespace CmpGrfLAB1
         List<List<Triangles>> triangles = new List<List<Triangles>>();
         List<Triangles> triangl = new List<Triangles>();
         List<points> tmp_point = new List<points>();
-        int N_set = 0, index = 0;
+        int N_set = 0;
+        int setIndex = 0, triangIndex=0;
         Color CurColor = Color.Yellow;//текущий цвет
         bool Paint_or_Move = true; //рисовать, если true,перемещение, если false
-        bool Active = false;//true-выбран примитив
+        bool ActiveSet = false;//true-выбран набор
+        bool ActiveTrian = false;//true - выбран треугольник
         bool Smooth = false;//true-есть сглаживание
         int dx = 0, dy = 0, x_offset, y_offset;
         private void glControl1_Load(object sender, EventArgs e)
@@ -88,8 +90,8 @@ namespace CmpGrfLAB1
                 GL.Color3(Color.Violet);
                 GL.Vertex2(pt.x, pt.y);
             }
-            if(Active)//если набор активный, то он выделяется точками
-                foreach(Triangles tr in triangles[index])
+            if(ActiveSet)//если набор активный, то он выделяется точками
+                foreach(Triangles tr in triangles[setIndex])
                 {
                     GL.PointSize(8);
                     GL.Color3(Color.Black);
@@ -97,6 +99,15 @@ namespace CmpGrfLAB1
                     GL.Vertex2(tr.b.x, tr.b.y);
                     GL.Vertex2(tr.c.x, tr.c.y);
                 }
+            if (ActiveTrian)//если треугольник активный, то он выделяется точками
+            {
+                GL.PointSize(8);
+                GL.Color3(Color.Red);
+                GL.Vertex2(triangles[setIndex][triangIndex].a.x, triangles[setIndex][triangIndex].a.y);
+                GL.Vertex2(triangles[setIndex][triangIndex].b.x, triangles[setIndex][triangIndex].b.y);
+                GL.Vertex2(triangles[setIndex][triangIndex].c.x, triangles[setIndex][triangIndex].c.y);
+            }
+                
             GL.End();
             if(Smooth)
                 GL.Disable(EnableCap.PointSmooth);
@@ -122,7 +133,7 @@ namespace CmpGrfLAB1
             {
                 N_set++;
                 triangles.Add(new List<Triangles>());
-                listBox1.Items.Add("Set №" + N_set.ToString());
+                lstbxSets.Items.Add("Set №" + N_set.ToString());
             }
             if (e.Button == MouseButtons.Middle)//выбор режима
             {
@@ -149,27 +160,33 @@ namespace CmpGrfLAB1
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (listBox1.SelectedIndices.Count != 0 && Active)
-                    foreach (Triangles tr in triangles[listBox1.SelectedIndex])
+                if (lstbxSets.SelectedIndices.Count != 0 && ActiveSet &&!ActiveTrian)
+                    foreach (Triangles tr in triangles[lstbxSets.SelectedIndex])
                     {
                         tr.red = colorDialog1.Color.R;
                         tr.green = colorDialog1.Color.G;
                         tr.blue = colorDialog1.Color.B;
                     }
+                if (lstbxTriangles.SelectedIndices.Count != 0 && ActiveTrian)
+                {
+                    triangles[lstbxSets.SelectedIndex][lstbxTriangles.SelectedIndex].red = colorDialog1.Color.R;
+                    triangles[lstbxSets.SelectedIndex][lstbxTriangles.SelectedIndex].green = colorDialog1.Color.G;
+                    triangles[lstbxSets.SelectedIndex][lstbxTriangles.SelectedIndex].blue = colorDialog1.Color.B;
+                }
                 CurColor = colorDialog1.Color;
             }
         }
 
         private void Del_Click(object sender, EventArgs e)//удаление набора
         {
-            var ind=listBox1.SelectedIndices;
+            var ind=lstbxSets.SelectedIndices;
             while(ind.Count!=0)
             {
-                triangles.RemoveAt(index);
-                listBox1.Items.RemoveAt(index);
-                index = listBox1.SelectedIndex;
+                triangles.RemoveAt(setIndex);
+                lstbxSets.Items.RemoveAt(setIndex);
+                setIndex = lstbxSets.SelectedIndex;
                 N_set--;
-                Active = false;
+                ActiveSet = false;
             }
         }
     
@@ -181,11 +198,11 @@ namespace CmpGrfLAB1
             dy = e.Y;
             if (e.Button == MouseButtons.Left && (!Paint_or_Move) )
             {
-                var ind = listBox1.SelectedIndices;
-                index = listBox1.SelectedIndex;
-                if (ind.Count != 0 && Active)
+                var ind = lstbxSets.SelectedIndices;
+                setIndex = lstbxSets.SelectedIndex;
+                if (ind.Count != 0 && ActiveSet && !ActiveTrian)
                 {
-                    foreach (Triangles tr in triangles[index])
+                    foreach (Triangles tr in triangles[setIndex])
                     {
                         tr.a.x += x_offset;
                         tr.a.y -= y_offset;
@@ -195,28 +212,56 @@ namespace CmpGrfLAB1
                         tr.c.y -= y_offset;
                     }
                 }
+                var ind1 = lstbxTriangles.SelectedIndices;
+                triangIndex = lstbxTriangles.SelectedIndex;
+                if (ind.Count != 0 && ActiveTrian)
+                {
+                    triangles[setIndex][triangIndex].a.x += x_offset;
+                    triangles[setIndex][triangIndex].a.y -= y_offset;
+                    triangles[setIndex][triangIndex].b.x += x_offset;
+                    triangles[setIndex][triangIndex].b.y -= y_offset;
+                    triangles[setIndex][triangIndex].c.x += x_offset;
+                    triangles[setIndex][triangIndex].c.y -= y_offset;
+                  
+                }
             }
         }    
         
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)//Активный набор в листбоксе
         {
-            var ind = listBox1.SelectedIndices;
+            var ind = lstbxSets.SelectedIndices;
             if(ind.Count != 0)
             {
-                index = listBox1.SelectedIndex;
-                Active = true;
+                setIndex = lstbxSets.SelectedIndex;
+                ActiveSet = true;
+                lstbxTriangles.Items.Clear();
+                for (int i = 1; i<=triangles[setIndex].Count; i++)
+                {
+                    lstbxTriangles.Items.Add("Triagle №" + i.ToString());
+                }
             }                          
+        }
+
+        private void lstbxTriangles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var ind = lstbxSets.SelectedIndices;
+            if (ind.Count != 0)
+            {
+                triangIndex = lstbxTriangles.SelectedIndex;
+                ActiveTrian = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)//отмена текущего набора
         {
-            Active = false;
-            index = listBox1.SelectedIndex;
+            ActiveSet = false;
+         //   setIndex = lstbxSets.SelectedIndex;
+            ActiveTrian = false;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)//сглаживание
         {
-            Smooth = checkBox1.Checked;
+            Smooth = chkbxSmooth.Checked;
         }
 
         private void button2_Click(object sender, EventArgs e)//отмена последнего треугольника

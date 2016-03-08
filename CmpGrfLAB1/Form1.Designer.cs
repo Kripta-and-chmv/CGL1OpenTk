@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.glControl1 = new OpenTK.GLControl();
-            this.color = new System.Windows.Forms.Button();
+            this.btnColor = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.Del = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnDeleteSet = new System.Windows.Forms.Button();
+            this.lstbxSets = new System.Windows.Forms.ListBox();
             this.Mode = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.chkbxSmooth = new System.Windows.Forms.CheckBox();
+            this.btnDelLastTriangle = new System.Windows.Forms.Button();
+            this.btnDelPoints = new System.Windows.Forms.Button();
+            this.lstbxTriangles = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // glControl1
@@ -63,34 +63,34 @@
             this.glControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControl1_MouseMove);
             this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
             // 
-            // color
+            // btnColor
             // 
-            this.color.Location = new System.Drawing.Point(873, 40);
-            this.color.Name = "color";
-            this.color.Size = new System.Drawing.Size(116, 35);
-            this.color.TabIndex = 1;
-            this.color.Text = "Color";
-            this.color.UseVisualStyleBackColor = true;
-            this.color.Click += new System.EventHandler(this.color_Click);
+            this.btnColor.Location = new System.Drawing.Point(873, 40);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(116, 35);
+            this.btnColor.TabIndex = 1;
+            this.btnColor.Text = "Color";
+            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Click += new System.EventHandler(this.color_Click);
             // 
-            // Del
+            // btnDeleteSet
             // 
-            this.Del.Location = new System.Drawing.Point(873, 317);
-            this.Del.Name = "Del";
-            this.Del.Size = new System.Drawing.Size(75, 23);
-            this.Del.TabIndex = 2;
-            this.Del.Text = "Del";
-            this.Del.UseVisualStyleBackColor = true;
-            this.Del.Click += new System.EventHandler(this.Del_Click);
+            this.btnDeleteSet.Location = new System.Drawing.Point(873, 317);
+            this.btnDeleteSet.Name = "btnDeleteSet";
+            this.btnDeleteSet.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteSet.TabIndex = 2;
+            this.btnDeleteSet.Text = "Delete";
+            this.btnDeleteSet.UseVisualStyleBackColor = true;
+            this.btnDeleteSet.Click += new System.EventHandler(this.Del_Click);
             // 
-            // listBox1
+            // lstbxSets
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(873, 110);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 82);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.lstbxSets.FormattingEnabled = true;
+            this.lstbxSets.Location = new System.Drawing.Point(873, 110);
+            this.lstbxSets.Name = "lstbxSets";
+            this.lstbxSets.Size = new System.Drawing.Size(120, 82);
+            this.lstbxSets.TabIndex = 3;
+            this.lstbxSets.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Mode
             // 
@@ -132,73 +132,73 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Remove set:";
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.Location = new System.Drawing.Point(954, 317);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancel.Location = new System.Drawing.Point(954, 317);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox1
+            // chkbxSmooth
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(873, 373);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(62, 17);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Smooth";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.chkbxSmooth.AutoSize = true;
+            this.chkbxSmooth.Location = new System.Drawing.Point(873, 373);
+            this.chkbxSmooth.Name = "chkbxSmooth";
+            this.chkbxSmooth.Size = new System.Drawing.Size(62, 17);
+            this.chkbxSmooth.TabIndex = 11;
+            this.chkbxSmooth.Text = "Smooth";
+            this.chkbxSmooth.UseVisualStyleBackColor = true;
+            this.chkbxSmooth.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // button2
+            // btnDelLastTriangle
             // 
-            this.button2.Location = new System.Drawing.Point(873, 421);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 50);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Delete the last entity";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDelLastTriangle.Location = new System.Drawing.Point(873, 421);
+            this.btnDelLastTriangle.Name = "btnDelLastTriangle";
+            this.btnDelLastTriangle.Size = new System.Drawing.Size(75, 50);
+            this.btnDelLastTriangle.TabIndex = 12;
+            this.btnDelLastTriangle.Text = "Delete the last entity";
+            this.btnDelLastTriangle.UseVisualStyleBackColor = true;
+            this.btnDelLastTriangle.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnDelPoints
             // 
-            this.button3.Location = new System.Drawing.Point(954, 421);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 50);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Delete the last points";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnDelPoints.Location = new System.Drawing.Point(954, 421);
+            this.btnDelPoints.Name = "btnDelPoints";
+            this.btnDelPoints.Size = new System.Drawing.Size(75, 50);
+            this.btnDelPoints.TabIndex = 13;
+            this.btnDelPoints.Text = "Delete the last points";
+            this.btnDelPoints.UseVisualStyleBackColor = true;
+            this.btnDelPoints.Click += new System.EventHandler(this.button3_Click);
             // 
-            // listBox2
+            // lstbxTriangles
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(873, 198);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 82);
-            this.listBox2.TabIndex = 3;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.lstbxTriangles.FormattingEnabled = true;
+            this.lstbxTriangles.Location = new System.Drawing.Point(873, 198);
+            this.lstbxTriangles.Name = "lstbxTriangles";
+            this.lstbxTriangles.Size = new System.Drawing.Size(120, 82);
+            this.lstbxTriangles.TabIndex = 3;
+            this.lstbxTriangles.SelectedIndexChanged += new System.EventHandler(this.lstbxTriangles_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 507);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelPoints);
+            this.Controls.Add(this.btnDelLastTriangle);
+            this.Controls.Add(this.chkbxSmooth);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Mode);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.Del);
-            this.Controls.Add(this.color);
+            this.Controls.Add(this.lstbxTriangles);
+            this.Controls.Add(this.lstbxSets);
+            this.Controls.Add(this.btnDeleteSet);
+            this.Controls.Add(this.btnColor);
             this.Controls.Add(this.glControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -210,20 +210,20 @@
         #endregion
 
         private OpenTK.GLControl glControl1;
-        private System.Windows.Forms.Button color;
+        private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button Del;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnDeleteSet;
+        private System.Windows.Forms.ListBox lstbxSets;
         private System.Windows.Forms.Label Mode;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox chkbxSmooth;
+        private System.Windows.Forms.Button btnDelLastTriangle;
+        private System.Windows.Forms.Button btnDelPoints;
+        private System.Windows.Forms.ListBox lstbxTriangles;
     }
 }
 
