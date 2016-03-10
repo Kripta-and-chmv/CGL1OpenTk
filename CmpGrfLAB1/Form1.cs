@@ -80,10 +80,11 @@ namespace CmpGrfLAB1
                 }
             }
             GL.End();
-            if(Smooth)
+            if (Smooth)
+            {
                 GL.Disable(EnableCap.LineSmooth);
-            if(Smooth)
                 GL.Enable(EnableCap.PointSmooth);//сглаживание точек
+            }
             GL.Begin(PrimitiveType.Points);
             foreach (points pt in tmp_point)//отрисовка примитива
             {
@@ -123,13 +124,13 @@ namespace CmpGrfLAB1
                 if (tmp_point.Count == 2)
                 {
                     tmp_point.Add(new points(x, y, red, green, blue));
-                    triangles[N_set].Add(new Triangles(tmp_point[0], tmp_point[1], tmp_point[2], red, green, blue));
+                    triangles[triangles.Count-1].Add(new Triangles(tmp_point[0], tmp_point[1], tmp_point[2], red, green, blue));
                     tmp_point.Clear();
                 }
                 else
                     tmp_point.Add(new points(x, y, red, green, blue));
             }
-            if (e.Button == MouseButtons.Right)//завершение набора
+            if ((e.Button == MouseButtons.Right)&&(triangles[triangles.Count-1].Count!=0))//завершение набора
             {
                 N_set++;
                 triangles.Add(new List<Triangles>());
@@ -185,9 +186,13 @@ namespace CmpGrfLAB1
                 triangles.RemoveAt(setIndex);
                 lstbxSets.Items.RemoveAt(setIndex);
                 setIndex = lstbxSets.SelectedIndex;
-                N_set--;
+                //N_set--;
                 ActiveSet = false;
+                ActiveTrian = false;
+                lstbxTriangles.Items.Clear();
             }
+            if (triangles.Count == 1)
+                N_set = 0;
         }
     
         private void glControl1_MouseMove(object sender, MouseEventArgs e)//перемещение набора фигур мышью
@@ -252,10 +257,25 @@ namespace CmpGrfLAB1
             }
         }
 
+        private void btnMode_Click(object sender, EventArgs e)
+        {
+            if (Paint_or_Move)
+            {
+                Paint_or_Move = false;
+                Mode.Text = "selected move mode";
+            }
+            else
+            {
+                Paint_or_Move = true;
+                Mode.Text = "selected drawing mode";
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)//отмена текущего набора
         {
             ActiveSet = false;
-         //   setIndex = lstbxSets.SelectedIndex;
+            setIndex = lstbxSets.SelectedIndex;
+            triangIndex = lstbxTriangles.SelectedIndex;
             ActiveTrian = false;
         }
 

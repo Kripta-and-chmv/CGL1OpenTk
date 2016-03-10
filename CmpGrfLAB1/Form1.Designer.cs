@@ -44,6 +44,7 @@
             this.btnDelLastTriangle = new System.Windows.Forms.Button();
             this.btnDelPoints = new System.Windows.Forms.Button();
             this.lstbxTriangles = new System.Windows.Forms.ListBox();
+            this.btnMode = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // glControl1
@@ -67,7 +68,7 @@
             // 
             this.btnColor.Location = new System.Drawing.Point(873, 40);
             this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(116, 35);
+            this.btnColor.Size = new System.Drawing.Size(120, 35);
             this.btnColor.TabIndex = 1;
             this.btnColor.Text = "Color";
             this.btnColor.UseVisualStyleBackColor = true;
@@ -182,11 +183,22 @@
             this.lstbxTriangles.TabIndex = 3;
             this.lstbxTriangles.SelectedIndexChanged += new System.EventHandler(this.lstbxTriangles_SelectedIndexChanged);
             // 
+            // btnMode
+            // 
+            this.btnMode.Location = new System.Drawing.Point(954, 367);
+            this.btnMode.Name = "btnMode";
+            this.btnMode.Size = new System.Drawing.Size(75, 23);
+            this.btnMode.TabIndex = 14;
+            this.btnMode.Text = "Mode";
+            this.btnMode.UseVisualStyleBackColor = true;
+            this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 507);
+            this.Controls.Add(this.btnMode);
             this.Controls.Add(this.btnDelPoints);
             this.Controls.Add(this.btnDelLastTriangle);
             this.Controls.Add(this.chkbxSmooth);
@@ -200,6 +212,8 @@
             this.Controls.Add(this.btnDeleteSet);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.glControl1);
+            this.MaximumSize = new System.Drawing.Size(1057, 546);
+            this.MinimumSize = new System.Drawing.Size(1057, 546);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -224,6 +238,7 @@
         private System.Windows.Forms.Button btnDelLastTriangle;
         private System.Windows.Forms.Button btnDelPoints;
         private System.Windows.Forms.ListBox lstbxTriangles;
+        private System.Windows.Forms.Button btnMode;
     }
 }
 
